@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<!-- ########### -->
+
+<div class="container mt-4">
+    <div class="row ">
+        <div class="col-md-1 border-end">
+            <button class="btn btn-outline-secondary  mb-3 ">+</button>
+        </div>
+        
+        <div class="col-md-11 ">
+
+            <h5>Create Pin</h5>
+            <hr>
+            <div class="row mt-4">
+                <div class="col-md-5">
+                    <div class="border rounded p-4 mt-2 ms-auto me-3 text-center bg-light" style="height: 300px; width: 250px;">
+                        <i class="fa-solid fs-3 mb-3 fa-circle-arrow-up"></i>
+                        <p class="fw-bold">Choose a file or drag and drop it here</p>
+                        <p class=" mt-5">We recommend using high-quality jpg files less than 20 MB or mp4 files less than 200 MB</p>
+                    </div>
+                    <hr class="ms-auto me-3" style="width: 250px;">
+                    <div class="d-flex justify-content-center ms-auto me-3" style="width: 250px;">
+                        <button class="btn btn-light">Save from URL</button>
+                    </div>
+                </div>
+                
+
+                <div class="col-md-7">
+                    <form>
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="title" placeholder="Add a title">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea class="form-control" id="description" placeholder="Add a detailed description"></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="link" class="form-label">Link</label>
+                            <input type="url" class="form-control" id="link" placeholder="Add a link">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="board" class="form-label">Board</label>
+                            <select class="form-select" id="board">
+                                <option selected>Choose a board</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="tags" class="form-label">Tagged topics</label>
+                            <input type="text" class="form-control" id="tags" placeholder="Search for a tag">
+                            <small class="text-muted">Don't worry, people won't see your tags.</small>
+                        </div>
+
+                        <div class="mb-3">
+                            <a href="#" class="text-muted">More options</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
