@@ -3,6 +3,14 @@
 {% load static %}
 <div class="container mt-4">
   <!-- Row to hold the cards -->
+   {% if user.authenticated %}
+   <h2>User loged in </h2>
+    {% else %}
+    
+    <h2> The user does not have an account</h2>
+   
+   {% endif %}
+
   <div class="row">
     
     <!-- Card 1 -->
