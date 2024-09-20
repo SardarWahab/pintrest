@@ -1,7 +1,8 @@
 from django.shortcuts import render,redirect,HttpResponse
 from django.contrib.auth.models import User
-from django.contrib.auth import login , authenticate
+from django.contrib.auth import login , authenticate , logout
 from django.contrib import messages
+from .models import Pin
 # Create your views here.
 def handle_login(request):
     if request.method == 'POST':
@@ -11,8 +12,8 @@ def handle_login(request):
         new_user = authenticate(request, username=username,password=password)
         if new_user:
             login(request,new_user)
-    else:
-        print('no form submitted')
+        else:
+            messages.info(request,"You have not this account, Please singup for login")
 
     return redirect('home')
 
@@ -37,3 +38,25 @@ def handle_register(request):
         new_user.save()
     
     return redirect('home')
+
+
+def create_pin(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        desc = request.POST.get('description')
+        pic = request.FILES.get('image')
+        author = request.user
+         
+        new_pin = Pin(author=author,title=title, description =desc ,pic=pic)
+        new_pin.save()
+        messages.success(request,'your pin succesfully uploaded...')
+    return render(request,'create.html')
+
+
+def handle_logout(request):
+    logout(request)
+    messages.info(request,'You are logged out successfully')
+    return redirect('home')
+
+def single_pin(request,id):
+    return render(request,'pin_page.html')
