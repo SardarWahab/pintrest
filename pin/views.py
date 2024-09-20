@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect,HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import login , authenticate
+from django.contrib import messages
 # Create your views here.
 def handle_login(request):
     if request.method == 'POST':
@@ -24,12 +25,15 @@ def handle_register(request):
 
         exesting_username = User.objects.filter(username=username).first()
         if exesting_username:
-            return HttpResponse('username already exist')
+            messages.info(request,'username already exist')
+            return redirect('home')
+    
         exesting_email = User.objects.filter(email=email).first()
         if exesting_email:
-            return HttpResponse('Email already exist')
+            messages.info(request,'Email already exist')
+            return redirect('home')
         # print("i got submitted data",username,email,password)
-        new_user = User.objects.create(username=username,email=email,password=password)
+        new_user = User.objects.create_user(username=username,email=email,password=password)
         new_user.save()
     
     return redirect('home')
