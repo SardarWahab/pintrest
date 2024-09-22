@@ -8,7 +8,7 @@
      <div class="row">
        
        <!-- Card 1 -->
-        {% for pin in pins %}
+     {% for pin in pins %}
 
         <div class="col-md-4 mt-4">
           <div class="card" style="width: 100%; position: relative;">
@@ -23,7 +23,9 @@
               </button>
             </div>
             <div class="card-body p-2">
-              <h6 class="card-title mb-2 text-truncate">{{pin.title}}</h6>
+              <h6 class="card-title mb-2 text-truncate">
+                <a href="/pin/{{pin.id}}">{{pin.title}}</a>
+              </h6>
               <div class="d-flex align-items-center">
                 <span class="small text-muted">{{pin.description}}</span>
               </div>
@@ -31,7 +33,6 @@
           </div>
         </div>
         {% endfor %}
-   
    
      </div> <!-- End row -->
     {% else %}

@@ -10,7 +10,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home, name='home'),
     path('create/',app_views.create_pin),
-    path('profile/',profile),
+    path('profile/',app_views.my_profile),
     path('login/',app_views.handle_login,name='login'),
     path('register/',app_views.handle_register,name='register'),
     path('logout/',app_views.handle_logout),

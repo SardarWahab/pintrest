@@ -59,4 +59,17 @@ def handle_logout(request):
     return redirect('home')
 
 def single_pin(request,id):
-    return render(request,'pin_page.html')
+    target_pin = Pin.objects.get(id=id)
+    context ={
+        'pin':target_pin
+    }
+    return render(request,'pin_page.html',context)
+
+
+def my_profile(request):
+    # all_pins = Pin.objects.all()
+    my_pins = Pin.objects.filter(author = request.user)
+    context = {
+        'my_pins': my_pins
+    }
+    return render(request,'profile.html',context)

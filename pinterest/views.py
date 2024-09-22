@@ -7,6 +7,3 @@ def home(request):
         'pins':pins
     }
     return render(request,'home.html',context)
-def profile(request):
-    
-    return render(request,'profile.html')

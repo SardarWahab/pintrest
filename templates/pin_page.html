@@ -4,12 +4,14 @@
 <div class="container mt-5">
   <!-- Card Component for showing the content -->
   <div class="card">
-      <img src="https://via.placeholder.com/800x400" class="card-img-top" alt="Sample Image">
+      <img src="/media/{{pin.pic}}" class="card-img-top" alt="Sample Image">
       <div class="card-body">
-          <h1 class="card-title">Page Title</h1>
-          <p class="card-text">This is a brief description of the content displayed on this page. You can expand it further as needed. Bootstrap's card component is used here to keep the layout clean and simple.</p>
-          <p class="card-text"><small class="text-muted">Author: John Doe</small></p>
-      </div>
+          <h1 class="card-title">{{pin.title}}</h1>
+          <p class="card-text">{{pin.description}}.</p>
+          <p class="card-text"><small class="text-muted">{{pin.author}}</small></p>
+        </div>
+        <a href="/"> <button class="btn btn-primary w-100">Go Back</button></a>
+       
   </div>
 </div>
 {% endblock content %}
