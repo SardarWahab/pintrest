@@ -14,7 +14,7 @@ urlpatterns = [
     path('login/',app_views.handle_login,name='login'),
     path('register/',app_views.handle_register,name='register'),
     path('logout/',app_views.handle_logout),
-    path('pin/<int:id>',app_views.single_pin, name='pin')
+    path('pin/<int:id>',app_views.single_pin, name='pin'),
 ] + static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
  
