@@ -2,7 +2,8 @@
 {% block content %}
 {% load static %}
 <div class="container text-center mt-5">
-  <div class="profile-icon bg-dark rounded-circle text-white d-inline-flex justify-content-center align-items-center" style="width: 100px; height: 100px;">
+  <div class="profile-icon bg-dark rounded-circle text-white d-inline-flex justify-content-center align-items-center"
+    style="width: 100px; height: 100px;">
     <span style="font-size: 48px;">A</span>
   </div>
   <h3 class="mt-3">{{user.username}}</h3>
@@ -18,34 +19,36 @@
 
 <div class="container">
   <div class="row">
-       
+
     <!-- Card 1 -->
-  {% for pin in my_pins %}
-  
-     <div class="col-md-4 mt-4">
-       <div class="card" style="width: 100%; position: relative;">
-         <img src="/media/{{pin.pic}}" class="card-img-top rounded" alt="Card Image" style="height: 300px; object-fit: cover;">
-         <button class="btn btn-danger btn-sm position-absolute top-0 start-0 m-2">Save</button>
-         <div class="position-absolute bottom-0 end-0 m-2 d-flex align-items-center">
-           <button class="btn btn-light btn-sm me-2 rounded-pill bg-light">
-             <i class="fas fa-share"><img style="height: 20px; width: 20px;" src="/media/{{pin.pic}}" alt=""></i>
-           </button>
-           <button class="btn btn-light rounded-pill bg-light">
-             <i class="fas fa-ellipsis-h"><img style="height: 20px; width: 20px;" src="{% static 'img/dots.png' %}" alt=""></i>
-           </button>
-         </div>
-         <div class="card-body p-2">
-           <h6 class="card-title mb-2 text-truncate">
-             <a href="/pin/{{pin.id}}">{{pin.title}}</a>
-           </h6>
-           <div class="d-flex align-items-center">
-             <span class="small text-muted">{{pin.description}}</span>
-           </div>
-         </div>
-       </div>
-     </div>
-     {% endfor %}
-  
+    {% for pin in my_pins %}
+
+    <div class="col-md-4 mt-4">
+      <div class="card" style="width: 100%; position: relative;">
+        <img src="/media/{{pin.pic}}" class="card-img-top rounded" alt="Card Image"
+          style="height: 300px; object-fit: cover;">
+        <button class="btn btn-danger btn-sm position-absolute top-0 start-0 m-2">Save</button>
+        <div class="position-absolute bottom-0 end-0 m-2 d-flex align-items-center">
+          <button class="btn btn-light btn-sm me-2 rounded-pill bg-light">
+            <i class="fas fa-share"><img style="height: 20px; width: 20px;" src="/media/{{pin.pic}}" alt=""></i>
+          </button>
+          <button class="btn btn-light rounded-pill bg-light">
+            <i class="fas fa-ellipsis-h"><img style="height: 20px; width: 20px;" src="{% static 'img/dots.png' %}"
+                alt=""></i>
+          </button>
+        </div>
+        <div class="card-body p-2">
+          <h6 class="card-title mb-2 text-truncate">
+            <a href="/pin/{{pin.id}}">{{pin.title}}</a>
+          </h6>
+          <div class="d-flex align-items-center">
+            <span class="small text-muted">{{pin.description}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
   </div> <!-- End row -->
 </div>
 {% endblock %}

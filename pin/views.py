@@ -73,3 +73,11 @@ def my_profile(request):
         'my_pins': my_pins
     }
     return render(request,'profile.html',context)
+
+
+def delete_pin(request,id):
+    target_pin = Pin.objects.get(id=id)
+    if target_pin.author == request.user:
+        target_pin.delete()
+        messages.success(request,"your pin delete successfully")
+        return redirect('home')
