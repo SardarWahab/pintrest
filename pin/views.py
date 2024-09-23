@@ -81,3 +81,19 @@ def delete_pin(request,id):
         target_pin.delete()
         messages.success(request,"your pin delete successfully")
         return redirect('home')
+    
+
+
+def update_pin(request,id):
+    target_pin = Pin.objects.get(id=id)
+    if request.method == 'POST':
+        data = request.POST
+        title = data.get('title')
+        description = data.get('description')
+        target_pin.title = title
+        target_pin.description = description
+        target_pin.save()
+    context = {
+        'pin':target_pin
+    }
+    return render(request,'updatePin.html',context)

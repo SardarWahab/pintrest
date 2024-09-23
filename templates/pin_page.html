@@ -15,6 +15,7 @@
         {% if pin.author == user %}
           
         <a href="/delete-pin/{{pin.id}}"><button class="btn btn-danger w-100">Delete Pin</button></a>
+        <a href="/update-pin/{{pin.id}}"><button class="btn btn-primary w-100">Update Pin</button></a>
         {% endif %}
   </div>
 </div>
