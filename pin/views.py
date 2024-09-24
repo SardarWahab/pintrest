@@ -13,7 +13,7 @@ def handle_login(request):
         if new_user:
             login(request,new_user)
         else:
-            messages.info(request,"You have not this account, Please singup for login")
+            messages.danger(request,"You have not this account, Please singup for login")
 
     return redirect('home')
 
@@ -26,12 +26,12 @@ def handle_register(request):
 
         exesting_username = User.objects.filter(username=username).first()
         if exesting_username:
-            messages.info(request,'username already exist')
+            messages.warning(request,'username already exist')
             return redirect('home')
     
         exesting_email = User.objects.filter(email=email).first()
         if exesting_email:
-            messages.info(request,'Email already exist')
+            messages.warning(request,'Email already exist')
             return redirect('home')
         # print("i got submitted data",username,email,password)
         new_user = User.objects.create_user(username=username,email=email,password=password)
@@ -93,7 +93,10 @@ def update_pin(request,id):
         target_pin.title = title
         target_pin.description = description
         target_pin.save()
+        messages.success(request,"your pin Update successfully")
     context = {
         'pin':target_pin
     }
+    
+
     return render(request,'updatePin.html',context)
