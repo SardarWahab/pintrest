@@ -100,3 +100,28 @@ def update_pin(request,id):
     
 
     return render(request,'updatePin.html',context)
+
+
+def save_pin(request,id):
+    target_pin = Pin.objects.filter(id=id).first()
+    if target_pin:
+        target_pin.savers.add(request.user)
+        target_pin.save()
+        messages.success(request,"The Pin has been saved")
+    else:
+        messages.error(request,"Pin not found")
+    return redirect('home')
+
+
+def unsave_pin(request, id):
+    target_pin = Pin.objects.filter(id=id).first()
+    if target_pin:
+        if request.user in target_pin.savers.all():
+            target_pin.savers.remove(request.user)
+            target_pin.save()
+            messages.warning(request,"Pin Unsaved")
+        else:
+            messages.error(request,"You haven't saved this Pin")
+    else:
+            messages.error(request,"Pin not found")
+            return redirect('home')
