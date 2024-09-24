@@ -13,7 +13,12 @@
         <div class="col-md-4 mt-4">
           <div class="card" style="width: 100%; position: relative;">
             <img src="/media/{{pin.pic}}" class="card-img-top rounded" alt="Card Image" style="height: 300px; object-fit: cover;">
-            <button class="btn btn-danger btn-sm position-absolute top-0 start-0 m-2">Save</button>
+            {% if user in pin.savers.alls %}
+            <a href="/unsave-pin/{{pin.id}}" class="btn btn-danger btn-sm position-absolute top-0 start-0 m-2">UnSave</a>
+            {% else %}
+
+            <a href="/save-pin/{{pin.id}}" class="btn btn-danger btn-sm position-absolute top-0 start-0 m-2">Save</a>
+            {% endif %}
             <div class="position-absolute bottom-0 end-0 m-2 d-flex align-items-center">
               <button class="btn btn-light btn-sm me-2 rounded-pill bg-light">
                 <i class="fas fa-share"><img style="height: 20px; width: 20px;" src="/media/{{pin.pic}}" alt=""></i>

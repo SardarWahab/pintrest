@@ -17,7 +17,9 @@ urlpatterns = [
     path('pin/<int:id>',app_views.single_pin, name='pin'),
     path('delete-pin/<int:id>',app_views.delete_pin),
     path('update-pin/<int:id>',app_views.update_pin),
-    path('save-pin/<int:id>', app_views.save_pin,name='save-pin')
+    path('save-pin/<int:id>', app_views.save_pin,name='save-pin'),
+    path('unsave-pin/<int:id>', app_views.unsave_pin,name='unsave-pin'),
+
 ] + static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
  
