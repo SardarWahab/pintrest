@@ -124,4 +124,4 @@ def unsave_pin(request, id):
             messages.error(request,"You haven't saved this Pin")
     else:
             messages.error(request,"Pin not found")
-            return redirect('home')
+    return redirect('home')
