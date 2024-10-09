@@ -122,3 +122,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MESSAGE_TAGS = {
     messages.ERROR : "danger"
 }
+AUTH_USER_MODEL = 'pin.CustomUser'

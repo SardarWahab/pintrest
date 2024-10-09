@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect,HttpResponse
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+from .models import CustomUser as User 
 from django.contrib.auth import login , authenticate , logout
 from django.contrib import messages
 from .models import Pin
