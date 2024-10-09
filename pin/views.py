@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect,HttpResponse
 # from django.contrib.auth.models import User
 from .models import CustomUser as User 
 from django.contrib.auth import login , authenticate , logout
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Pin
 # Create your views here.
@@ -14,7 +15,7 @@ def handle_login(request):
         if new_user:
             login(request,new_user)
         else:
-            messages.danger(request,"You have not this account, Please singup for login")
+            messages.error(request,"You have not this account, Please singup for login")
 
     return redirect('home')
 
@@ -102,7 +103,7 @@ def update_pin(request,id):
 
     return render(request,'updatePin.html',context)
 
-
+@login_required
 def save_pin(request,id):
     target_pin = Pin.objects.filter(id=id).first()
     if target_pin:
