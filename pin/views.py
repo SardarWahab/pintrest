@@ -34,7 +34,7 @@ def handle_register(request):
         exesting_email = User.objects.filter(email=email).first()
         if exesting_email:
             messages.warning(request,'Email already exist')
-            return redirect('home')
+            return redirect('home') 
         # print("i got submitted data",username,email,password)
         new_user = User.objects.create_user(username=username,email=email,password=password)
         new_user.save()
